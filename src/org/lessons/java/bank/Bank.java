@@ -16,8 +16,9 @@ public class Bank {
         Conto bankaccount = new Conto(userName);
         System.out.println(bankaccount);
 
-        System.out.println("Cosa vuoi fare? Premi 1 per deposito, Premi 2 per prelievo, Premi 3 per uscire");
-        rispostaUtente = Integer.parseInt(scan.nextLine());
+        do {
+            System.out.println("Cosa vuoi fare? Premi 1 per deposito, Premi 2 per prelievo, Premi 3 per uscire");
+            rispostaUtente = Integer.parseInt(scan.nextLine());
 
             if (rispostaUtente == 1){
                 System.out.println("Quando vuoi inserire?");
@@ -35,5 +36,6 @@ public class Bank {
             } else {
                 System.out.println("comando non riconosciuto");
             }
+        } while (rispostaUtente != 3);
     }
 }

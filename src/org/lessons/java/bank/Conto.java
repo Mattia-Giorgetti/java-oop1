@@ -46,7 +46,7 @@ public class Conto {
             System.out.println("Non puoi prelevare da un conto a 0");
         }
         this.saldo -= importo;
-        if (saldo - importo < 0){
+        if (saldo < importo){
             System.out.println("Non hai abbastanza disponibilità");
         }
     }
