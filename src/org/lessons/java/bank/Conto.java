@@ -42,21 +42,19 @@ public class Conto {
         this.saldo += importo;
     }
     public void preleva(double importo){
-        if(saldo < 0){
+        if(saldo == 0){
             System.out.println("Non puoi prelevare da un conto a 0");
-        }
-        this.saldo -= importo;
-        if (saldo < importo){
+        } else if (this.saldo < importo){
             System.out.println("Non hai abbastanza disponibilità");
+        } else {
+            this.saldo -= importo;
         }
     }
 
     @Override
     public String toString() {
-        return "Conto{" +
-                "numeroConto=" + numeroConto +
-                ", nomeProprietario='" + nomeProprietario + '\'' +
-                ", saldo=" + saldo +
-                '}';
+        return "Numero Conto: " + numeroConto +
+                ", Intestatario: '" + nomeProprietario + '\'' +
+                ", Saldo: " + saldo + "€";
     }
 }

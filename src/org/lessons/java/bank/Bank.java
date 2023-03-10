@@ -24,12 +24,12 @@ public class Bank {
                 System.out.println("Quando vuoi inserire?");
                 importo = Double.parseDouble(scan.nextLine());
                 bankaccount.deposita(importo);
-                System.out.println("Saldo aggiornato: " + bankaccount.getSaldo());
+                System.out.println("Saldo aggiornato: " + bankaccount.getSaldo() + "€");
             } else if (rispostaUtente == 2){
                 System.out.println("Quanto vuoi prelevare?");
                 importo = Double.parseDouble(scan.nextLine());
                 bankaccount.preleva(importo);
-                System.out.println(bankaccount.getSaldo() >= 0 ? "Saldo aggiornato: " + bankaccount.getSaldo() : "");
+                System.out.println("Saldo aggiornato: " + bankaccount.getSaldo() + "€");
 
             } else if (rispostaUtente == 3) {
                 System.out.println("Arrivederci");
