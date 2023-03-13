@@ -1,5 +1,7 @@
 package org.lessons.java.shop;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Random;
 
@@ -8,13 +10,13 @@ public class Prodotto {
     private final int codice;
     private String nome;
     private String descrizione;
-    private double prezzo;
-    private final static double IVA = 0.22;
+    private BigDecimal prezzo;
+    private final static BigDecimal IVA = BigDecimal.valueOf(0.22);
 
 //    COSTRUTTORE
-   public Prodotto(String nome, String descrizione, double prezzo){
+   public Prodotto(String nome, String descrizione, BigDecimal prezzo){
         Random rand = new Random();
-        this.codice = rand.nextInt(1,100);
+        this.codice = rand.nextInt(1,10000);
         this.nome = nome;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
@@ -43,11 +45,11 @@ public class Prodotto {
         this.descrizione = descrizione;
     }
 
-    public double getPrezzo() {
+    public BigDecimal getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(double prezzo) {
+    public void setPrezzo(BigDecimal prezzo) {
         this.prezzo = prezzo;
     }
 
@@ -55,12 +57,17 @@ public class Prodotto {
 //    METODI
 
     public String extendedName(){
-       return codice + nome;
+       return formattedCode() + nome;
     }
-    public String prezzoIvato(){
-
-       DecimalFormat df = new DecimalFormat("###,###.00");
-        return df.format(prezzo * (1 + IVA));
+    public BigDecimal prezzoIvato(){
+        return prezzo.add(prezzo.multiply(IVA).setScale(2, RoundingMode.HALF_EVEN));
+    }
+    public String formattedCode(){
+       String codiceStr = String.valueOf(codice);
+       while (codiceStr.length() < 8){
+           codiceStr = "0" + codiceStr;
+       }
+       return codiceStr;
     }
 
     @Override

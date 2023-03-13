@@ -1,12 +1,13 @@
 package org.lessons.java.bank;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Bank {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        double importo;
+        BigDecimal importo;
         int rispostaUtente;
         boolean exit = false;
 
@@ -22,12 +23,12 @@ public class Bank {
 
             if (rispostaUtente == 1){
                 System.out.println("Quando vuoi inserire?");
-                importo = Double.parseDouble(scan.nextLine());
+                importo = BigDecimal.valueOf(Double.parseDouble(scan.nextLine()));
                 bankaccount.deposita(importo);
                 System.out.println("Saldo aggiornato: " + bankaccount.getSaldo() + "€");
             } else if (rispostaUtente == 2){
                 System.out.println("Quanto vuoi prelevare?");
-                importo = Double.parseDouble(scan.nextLine());
+                importo = BigDecimal.valueOf(Double.parseDouble(scan.nextLine()));
                 bankaccount.preleva(importo);
                 System.out.println("Saldo aggiornato: " + bankaccount.getSaldo() + "€");
 

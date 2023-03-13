@@ -1,5 +1,6 @@
 package org.lessons.java.bank;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 public class Conto {
@@ -7,7 +8,7 @@ public class Conto {
 //    CAMPI
     private final int numeroConto;
     private String nomeProprietario;
-    private double saldo;
+    private BigDecimal saldo;
 
 //    COSTRUTTORE
 
@@ -15,7 +16,7 @@ public class Conto {
         Random rand = new Random();
         this.numeroConto = rand.nextInt(1,1000);
         this.nomeProprietario = nomeProprietario;
-        this.saldo = 0;
+        this.saldo = new BigDecimal("0.00");
     }
 
 //    GETTER SETTER
@@ -24,7 +25,7 @@ public class Conto {
         return numeroConto;
     }
 
-    public double getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
@@ -38,16 +39,21 @@ public class Conto {
 
 //    METODI
 
-    public void deposita(double importo){
-        this.saldo += importo;
+    public void deposita(BigDecimal importo){
+        if (importo.compareTo(new BigDecimal("0")) > 0){
+            this.saldo = saldo.add(importo);
+        } else {
+            System.out.println("Importo non valido");
+        }
+
     }
-    public void preleva(double importo){
-        if(saldo == 0){
+    public void preleva(BigDecimal importo){
+        if(saldo.equals(new BigDecimal("0.00"))){
             System.out.println("Non puoi prelevare da un conto a 0");
-        } else if (this.saldo < importo){
+        } else if (this.saldo.compareTo(importo) < 0){
             System.out.println("Non hai abbastanza disponibilità");
         } else {
-            this.saldo -= importo;
+            this.saldo = saldo.subtract(importo);
         }
     }
 

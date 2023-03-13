@@ -2,6 +2,7 @@ package org.lessons.java.shop;
 
 import org.lessons.java.shop.Prodotto;
 
+import java.math.BigDecimal;
 
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
 
         String nome = "T-shirt";
         String descrizione = "Maglia bianca con scritte nere";
-        double price = 10.99;
+        BigDecimal price = new BigDecimal("10.99");
 
         Prodotto product1 = new Prodotto(nome, descrizione, price );
         System.out.println(product1);
@@ -18,7 +19,7 @@ public class Main {
 
         product1.setDescrizione("Maglia nera");
         product1.setNome("Jumper");
-        product1.setPrezzo(13.99);
+        product1.setPrezzo(new BigDecimal("13.99"));
 
 //        Ristampo il prodotto modificato
 
